@@ -1,50 +1,134 @@
-# Welcome to your Expo app 👋
+# 🎵 Bop-App  
+**AI-Powered Swipe-Based Music Recommendation System**
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Bop-App is a machine learning–driven music recommendation application where users swipe right (like) or left (dislike) on songs. The system continuously learns user preferences and generates personalized music recommendations in real time.
 
-## Get started
+This project demonstrates applied machine learning, recommendation systems, personalization, and Retrieval-Augmented Generation (RAG) concepts in a production-style architecture.
 
-1. Install dependencies
+---
 
-   ```bash
-   npm install
-   ```
+## 🚀 Features
 
-2. Start the app
+- 🎯 Swipe-based feedback collection (implicit preference learning)
+- 🤖 Hybrid recommendation system (collaborative + content-based)
+- 🔄 Real-time user preference embedding updates
+- 🧊 Cold-start handling for new users and songs
+- 📊 Model evaluation (Precision@K, Recall@K, ROC-AUC)
+- 🧠 Personalized RAG for contextual playlist generation
+- ⚡ Fast similarity search using vector embeddings
 
-   ```bash
-    npx expo start
-   ```
+---
 
-In the output, you'll find options to open the app in a
+## 🏗️ System Architecture
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### 1️⃣ Data Collection
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+User interactions:
+- Right swipe → Positive feedback
+- Left swipe → Negative feedback
 
-## Get a fresh project
+Interactions are stored in a user-item matrix and logged for model training.
 
-When you're ready, run:
+---
 
-```bash
-npm run reset-project
-```
+### 2️⃣ Recommendation Engine
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+#### 🔹 Collaborative Filtering
+- Matrix factorization (SVD / ALS)
+- Learns latent embeddings for users and songs
+- Captures hidden preference patterns
 
-## Learn more
+#### 🔹 Content-Based Filtering
+- Uses song metadata:
+  - Genre
+  - Tempo
+  - Mood
+  - Artist
+- Extracts audio features (MFCCs, spectral features)
+- Computes cosine similarity between song vectors
 
-To learn more about developing your project with Expo, look at the following resources:
+#### 🔹 Hybrid Ranking
+Final recommendations combine:
+- User latent embedding score
+- Content similarity score
+- Popularity prior (for cold-start)
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+---
 
-## Join the community
+### 3️⃣ Personalization Engine
 
-Join our community of developers creating universal apps.
+Each user has a dynamic preference vector that updates after every swipe:
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- Like → Move embedding toward song vector  
+- Dislike → Move embedding away from song vector  
+
+This enables continuous real-time adaptation.
+
+---
+
+### 4️⃣ Personalized RAG (Retrieval-Augmented Generation)
+
+To enhance explainability and engagement:
+
+**Step 1: Retrieve**
+- User listening history
+- Song metadata
+- Artist information
+
+**Step 2: Generate**
+- Personalized playlist descriptions
+- Mood-based summaries
+- “Why you’ll like this” explanations
+
+This combines recommendation systems with LLM-based generation.
+
+---
+
+## 📈 Machine Learning Components
+
+- Matrix Factorization (SVD / ALS)
+- Like-prediction classification model
+- Cosine similarity ranking
+- Approximate Nearest Neighbor (ANN) search
+- Clustering (K-Means) for taste profiling
+- Reinforcement-style reward optimization
+- A/B testing simulations
+
+---
+
+## 📊 Evaluation Metrics
+
+- Precision@K
+- Recall@K
+- ROC-AUC
+- Engagement rate
+- Swipe-to-like conversion ratio
+
+---
+
+## 🧊 Cold Start Strategy
+
+### New Users
+- Popularity-based recommendations
+- Genre onboarding selection
+- Content similarity bootstrapping
+
+### New Songs
+- Audio feature embedding similarity
+- Metadata-based similarity scoring
+
+---
+
+## 🛠️ Tech Stack
+
+- Python  
+- NumPy  
+- Pandas  
+- Scikit-learn / PyTorch  
+- FastAPI  
+- FAISS (vector search)  
+- REST APIs  
+
+---
+
+## 📂 Project Structure
