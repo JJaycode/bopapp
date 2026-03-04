@@ -7,21 +7,21 @@ This project demonstrates applied machine learning, recommendation systems, pers
 
 ---
 
-## 🚀 Features
+##  Features
 
-- 🎯 Swipe-based feedback collection (implicit preference learning)
-- 🤖 Hybrid recommendation system (collaborative + content-based)
-- 🔄 Real-time user preference embedding updates
-- 🧊 Cold-start handling for new users and songs
-- 📊 Model evaluation (Precision@K, Recall@K, ROC-AUC)
-- 🧠 Personalized RAG for contextual playlist generation
-- ⚡ Fast similarity search using vector embeddings
+-  Swipe-based feedback collection (implicit preference learning)
+-  Hybrid recommendation system (collaborative + content-based)
+-  Real-time user preference embedding updates
+-  Cold-start handling for new users and songs
+-  Model evaluation (Precision@K, Recall@K, ROC-AUC)
+-  Personalized RAG for contextual playlist generation
+-  Fast similarity search using vector embeddings
 
 ---
 
-## 🏗️ System Architecture
+##  System Architecture
 
-### 1️⃣ Data Collection
+### Data Collection
 
 User interactions:
 - Right swipe → Positive feedback
@@ -31,7 +31,7 @@ Interactions are stored in a user-item matrix and logged for model training.
 
 ---
 
-### 2️⃣ Recommendation Engine
+### Recommendation Engine
 
 #### 🔹 Collaborative Filtering
 - Matrix factorization (SVD / ALS)
